@@ -2,25 +2,26 @@ import { Todo } from '../../types/Todos'
 import './SingleTodo.css'
 import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { TodoStore } from '../../utils/context/TodoStore'
 
 interface Props {
-  key: string | number
   todo: Todo
-  todos: Todo[]
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const SingleTodo = ({ todo, todos, setTodos, key }: Props) => {
+const SingleTodo = ({ todo }: Props) => {
   const [isEditing, setIsEditing] = useState(false)
-  const [editTodo, setEditTodo] = useState(todo.inputValue)
+  const [editTodo, setEditTodo] = useState(todo.todo)
+
+  const { state, dispatch } = useContext(TodoStore)
+  console.log(state)
+  console.log(editTodo)
 
   const handleDone = (id: number) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
-      )
-    )
+    dispatch({
+      type: 'done',
+      payload: id,
+    })
   }
 
   const handleEdit = () => {
@@ -28,19 +29,20 @@ const SingleTodo = ({ todo, todos, setTodos, key }: Props) => {
       setIsEditing(!isEditing)
     }
   }
-  console.log(isEditing)
 
   const handleDelete = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id))
+    dispatch({
+      type: 'remove',
+      payload: id,
+    })
   }
 
   const handleSubmitEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault()
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, inputValue: editTodo } : todo
-      )
-    )
+    dispatch({
+      type: 'edit',
+      payload: { editTodo, id },
+    })
     setIsEditing(!isEditing)
   }
 
@@ -65,7 +67,7 @@ const SingleTodo = ({ todo, todos, setTodos, key }: Props) => {
         />
       ) : (
         <span className={`${todo.isDone ? 'todo-text--done' : ''} todos-text`}>
-          {todo.inputValue}
+          {todo.todo}
         </span>
       )}
 

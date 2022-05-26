@@ -1,23 +1,23 @@
+import '../SingleTodo/SingleTodo.css'
+import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai'
+import { MdDone } from 'react-icons/md'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { TodoStore } from '../../utils/context/TodoStore'
+import './TodosList.css'
 import { Todo } from '../../types/Todos'
 import SingleTodo from '../SingleTodo'
-import './TodosList.css'
 
 interface Props {
   todos: Todo[]
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const TodosList = ({ todos, setTodos }: Props) => {
-  console.log(todos)
+const TodosList = ({ todos }: Props) => {
+  const { state } = useContext(TodoStore)
+
   return (
     <div className="todos">
-      {todos.map((todo) => (
-        <SingleTodo
-          key={todo.id}
-          todo={todo}
-          todos={todos}
-          setTodos={setTodos}
-        />
+      {todos?.map((todo) => (
+        <SingleTodo todo={todo} key={todo.id} />
       ))}
     </div>
   )
