@@ -2,7 +2,6 @@ import { Todo } from '../../types/Todos'
 import './SingleTodo.css'
 import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
-import { useEffect, useRef, useState } from 'react'
 import { useTodos } from '../../hook/useTodo'
 
 interface Props {
@@ -10,29 +9,16 @@ interface Props {
 }
 
 const SingleTodo = ({ todo }: Props) => {
-  const [isEditing, setIsEditing] = useState(false)
-  const [editTodo, setEditTodo] = useState(todo.todo)
-
-  const { handleDone, handleDelete, handleEditTodo } = useTodos()
-
-  const handleEdit = () => {
-    if (!isEditing && !todo.isDone) {
-      setIsEditing(!isEditing)
-    }
-  }
-
-  const handleSubmitEdit = (e: React.FormEvent, id: number) => {
-    e.preventDefault()
-    handleEditTodo(editTodo, id)
-    setIsEditing(!isEditing)
-  }
-
-  const editRef = useRef<HTMLInputElement>(null)
-
-  // useEffect to focus the edit input and improve UX
-  useEffect(() => {
-    editRef.current?.focus()
-  }, [isEditing])
+  const {
+    handleDone,
+    handleDelete,
+    handleEdit,
+    isEditing,
+    editTodo,
+    setEditTodo,
+    handleSubmitEdit,
+    editRef,
+  } = useTodos()
 
   return (
     <form
@@ -53,7 +39,7 @@ const SingleTodo = ({ todo }: Props) => {
       )}
 
       <div className="todos-actions">
-        <span className="icon" onClick={handleEdit}>
+        <span className="icon" onClick={() => handleEdit(todo)}>
           <AiTwotoneEdit />
         </span>
         <span className="icon" onClick={() => handleDelete(todo.id)}>

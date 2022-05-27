@@ -1,18 +1,9 @@
-import { createContext, FC, useReducer } from 'react'
-import { Todo, TodoProviderProps } from '../../../types/Todos'
-import { TodoReducer } from '../../reducer/TodoReducer'
+import { useReducer } from 'react'
+import { TodoProviderProps } from '../../types/Todos'
+import { TodoStore } from '../TodoContext'
+import { TodoReducer } from '../TodoReducer'
 
-type TodoContextProvider = {
-  state: Todo[]
-  handleDone: (id: number) => void
-  handleDelete: (id: number) => void
-  handleAddTodo: (todo: string) => void
-  handleEditTodo: (editTodo: string, id: number) => void
-}
-
-const TodoStore = createContext<TodoContextProvider>({} as TodoContextProvider)
-
-const TodoProvider = ({ children }: TodoProviderProps) => {
+export const TodoProvider = ({ children }: TodoProviderProps) => {
   const [state, dispatch] = useReducer(TodoReducer, [])
 
   const handleDone = (id: number) => {
@@ -53,5 +44,3 @@ const TodoProvider = ({ children }: TodoProviderProps) => {
   }
   return <TodoStore.Provider value={value}>{children}</TodoStore.Provider>
 }
-
-export { TodoStore, TodoProvider }
