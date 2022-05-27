@@ -2,8 +2,8 @@ import { Todo } from '../../types/Todos'
 import './SingleTodo.css'
 import { AiTwotoneEdit, AiFillDelete } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
-import { useContext, useEffect, useRef, useState } from 'react'
-import { TodoStore } from '../../utils/context/TodoStore'
+import { useEffect, useRef, useState } from 'react'
+import { useTodos } from '../../hook/useTodo'
 
 interface Props {
   todo: Todo
@@ -13,16 +13,7 @@ const SingleTodo = ({ todo }: Props) => {
   const [isEditing, setIsEditing] = useState(false)
   const [editTodo, setEditTodo] = useState(todo.todo)
 
-  const { state, dispatch } = useContext(TodoStore)
-  console.log(state)
-  console.log(editTodo)
-
-  const handleDone = (id: number) => {
-    dispatch({
-      type: 'done',
-      payload: id,
-    })
-  }
+  const { handleDone, handleDelete, handleEditTodo } = useTodos()
 
   const handleEdit = () => {
     if (!isEditing && !todo.isDone) {
@@ -30,19 +21,9 @@ const SingleTodo = ({ todo }: Props) => {
     }
   }
 
-  const handleDelete = (id: number) => {
-    dispatch({
-      type: 'remove',
-      payload: id,
-    })
-  }
-
   const handleSubmitEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault()
-    dispatch({
-      type: 'edit',
-      payload: { editTodo, id },
-    })
+    handleEditTodo(editTodo, id)
     setIsEditing(!isEditing)
   }
 

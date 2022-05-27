@@ -4,19 +4,19 @@ import './InputField.css'
 interface Props {
   todo: string
   setTodo: React.Dispatch<React.SetStateAction<string>>
-  handleAddTodo: (e: React.FormEvent) => void
+  handleSubmitTodo: (e: React.FormEvent) => void
 }
 
 // We can use both
 // const InputField = ({ todo, setTodo }: Props) => {
-const InputField: FC<Props> = ({ todo, setTodo, handleAddTodo }) => {
+const InputField: FC<Props> = ({ todo, setTodo, handleSubmitTodo }) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   return (
     <form
       className="input"
       onSubmit={(e) => {
-        handleAddTodo(e)
+        handleSubmitTodo(e)
         inputRef.current?.blur()
       }}
     >

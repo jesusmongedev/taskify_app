@@ -1,7 +1,5 @@
-import { ReactNode } from 'react'
-
 export interface TodoProviderProps {
-  children: ReactNode
+  children: JSX.Element | JSX.Element[]
 }
 
 export interface Todo {
