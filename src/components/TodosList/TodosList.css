@@ -1,12 +1,33 @@
 .todos {
-  display: flex;
-  justify-content: space-evenly;
-  width: 95%;
-  flex-wrap: wrap;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: rgb(50, 195, 205);
+  margin-bottom: 10px;
+  height: min-content;
 }
 
-@media screen and (mind-width: 700px) {
+.todos__heading {
+  font-size: 30px;
+  color: white;
+}
+
+.container {
+  margin: 10px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.completed {
+  background-color: rgb(235, 103, 80);
+}
+
+@media screen and (min-width: 700px) {
   .todos {
-    width: 90%;
+    width: 100%;
+  }
+  .container {
+    gap: 10px;
+    flex-direction: row;
   }
 }

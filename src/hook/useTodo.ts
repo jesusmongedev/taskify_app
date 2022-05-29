@@ -32,6 +32,9 @@ export const useTodos = () => {
     setIsEditing(!isEditing)
   }
 
+  const activeTodos = [...state].filter((todo) => todo.isDone === false)
+  const completedTodos = [...state].filter((todo) => todo.isDone === true)
+
   const editRef = useRef<HTMLInputElement>(null)
 
   // useEffect to focus the edit input and improve UX
@@ -42,7 +45,7 @@ export const useTodos = () => {
   return {
     todo,
     setTodo,
-    todos: state,
+    todos: activeTodos,
     handleDone,
     handleDelete,
     handleSubmitTodo,
@@ -53,5 +56,6 @@ export const useTodos = () => {
     setEditTodo,
     handleSubmitEdit,
     editRef,
+    completedTodos,
   }
 }

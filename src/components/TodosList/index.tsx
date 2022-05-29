@@ -5,14 +5,26 @@ import SingleTodo from '../SingleTodo'
 
 interface Props {
   todos: Todo[]
+  completedTodos: Todo[]
 }
 
-const TodosList = ({ todos }: Props) => {
+const TodosList = ({ todos, completedTodos }: Props) => {
   return (
-    <div className="todos">
-      {todos?.map((todo) => (
-        <SingleTodo todo={todo} key={todo.id} />
-      ))}
+    <div className="container">
+      <div className="todos">
+        <span className="todos__heading">Active Tasks {todos.length}</span>
+        {todos?.map((todo) => (
+          <SingleTodo todo={todo} key={todo.id} />
+        ))}
+      </div>
+      <div className="todos completed">
+        <span className="todos__heading">
+          Completed Tasks {completedTodos.length}
+        </span>
+        {completedTodos?.map((completedTodo) => (
+          <SingleTodo todo={completedTodo} key={completedTodo.id} />
+        ))}
+      </div>
     </div>
   )
 }

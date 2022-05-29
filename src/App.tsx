@@ -4,7 +4,7 @@ import TodosList from './components/TodosList'
 import { useTodos } from './hook/useTodo'
 
 const App = () => {
-  const { todos, handleSubmitTodo, todo, setTodo } = useTodos()
+  const { todos, handleSubmitTodo, todo, setTodo, completedTodos } = useTodos()
 
   return (
     <div className="App">
@@ -15,7 +15,7 @@ const App = () => {
         handleSubmitTodo={handleSubmitTodo}
       />
 
-      <TodosList todos={todos} />
+      <TodosList todos={todos} completedTodos={completedTodos} />
     </div>
   )
 }
