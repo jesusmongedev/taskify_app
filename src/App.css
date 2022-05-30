@@ -6,7 +6,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #2f74c0;
+  /* background-color: #2f74c0; */
+  background: url('https://i.postimg.cc/Hn8V64wV/david-schultz.jpg');
+  background-size: cover;
   font-family: 'Neucha', cursive;
 }
 

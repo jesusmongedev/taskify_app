@@ -11,9 +11,14 @@
   padding: 25px;
   border: none;
   transition: 0.2s;
-  box-shadow: inset 0 0 5px black;
+  box-shadow: inset 0 0 5px var(--bg-grey-100);
+  background-color: var(--bg-white);
+  backdrop-filter: blur(20px);
+  color: #fff;
 }
-
+.input__box::placeholder {
+  color: rgb(205, 205, 205);
+}
 .input__box:focus {
   box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
   outline: none;

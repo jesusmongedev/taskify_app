@@ -1,9 +1,10 @@
 .todos {
   padding: 15px;
   border-radius: 5px;
-  background-color: rgb(50, 195, 205);
   margin-bottom: 10px;
   height: min-content;
+  background-color: var(--bg-white);
+  backdrop-filter: blur(20px);
 }
 
 .todos__heading {
@@ -19,7 +20,8 @@
 }
 
 .completed {
-  background-color: rgb(235, 103, 80);
+  background-color: var(--bg-grey-200);
+  backdrop-filter: blur(20px);
 }
 
 @media screen and (min-width: 700px) {
