@@ -15,5 +15,5 @@
   Taskify App
   <hr/>
   <br/>
-  <img alt="Google Clone" src="https://i.postimg.cc/1tQN1Rkg/taskfy.png" />
+  <img alt="Taskify App" src="https://i.imgur.com/PsW9Fwz.png" />
 </p>
