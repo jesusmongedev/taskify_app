@@ -2,6 +2,7 @@
     <img alt="VITE" src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" width="120" />
     <img alt="CSS3" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" width="200" />
 </p>
+
 <h1 align="center">
   React Typescript Project
 </h1>
@@ -17,3 +18,5 @@
   <br/>
   <img alt="Taskify App" src="https://i.imgur.com/PsW9Fwz.png" />
 </p>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fbbfe56b-7f27-41d0-9c6e-891562828175/deploy-status)](https://app.netlify.com/sites/taskify-jmongedev/deploys)
