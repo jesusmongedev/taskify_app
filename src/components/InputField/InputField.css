@@ -3,6 +3,7 @@
   width: 95%;
   position: relative;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .input__box {
@@ -33,7 +34,8 @@
   right: 0px;
   border: none;
   font-size: 15px;
-  background-color: #2f74c0;
+  background-color: var(--bg-white);
+  backdrop-filter: blur(20px);
   color: white;
   transition: 0.2s all;
   box-shadow: 0 0 10px black;
@@ -41,7 +43,8 @@
 }
 
 .input__submit:hover {
-  background-color: #388ae2;
+  background-color: var(--bg-grey-100);
+  backdrop-filter: blur(20px);
 }
 
 .input__submit:active {
